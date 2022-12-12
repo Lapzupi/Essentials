@@ -6,7 +6,13 @@
 
 [<img alt="Patreon" src="https://img.shields.io/badge/-Support_on_Patreon-F96854.svg?logo=patreon&style=flat-square&logoColor=white" height=32>](https://www.patreon.com/essentialsx)
 
-This is a fork of Essentials called EssentialsX.
+EssentialsX but with a dynamic home count.
+
+To use make sure to set a "base" home amount using luckperms:
+`/lp group default meta set essentials_homes.base-amount 1`
+The dynamic amount should be modified via the command `/bonushomes` (`/bonushomes add <amount>`, `/bonushomes remove <amount>`, `/bonushomes set <amount>`)
+
+This is a fork of Essentials called EssentialsX. 
 
 If you are using this, do **NOT** ask Essentials for support.
 

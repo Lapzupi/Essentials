@@ -2,6 +2,7 @@ package com.earth2me.essentials.commands;
 
 import com.earth2me.essentials.CommandSource;
 import com.earth2me.essentials.User;
+import com.earth2me.essentials.utils.LPMetaUtil;
 import com.earth2me.essentials.utils.LocationUtil;
 import com.earth2me.essentials.utils.NumberUtil;
 import org.bukkit.Location;
@@ -70,12 +71,12 @@ public class Commandsethome extends EssentialsCommand {
 
     private boolean checkHomeLimit(final User user, final User usersHome, final String name) throws Exception {
         if (!user.isAuthorized("essentials.sethome.multiple.unlimited")) {
-            final int limit = ess.getSettings().getHomeLimit(user);
+            final int limit = LPMetaUtil.calcMaxHomes(user.getUUID());
             if (usersHome.getHomes().size() >= limit) {
                 if (usersHome.getHomes().contains(name)) {
                     return false;
                 }
-                throw new Exception(tl("maxHomes", ess.getSettings().getHomeLimit(user)));
+                throw new Exception(tl("maxHomes", limit));
             }
             return limit == 1;
         }
