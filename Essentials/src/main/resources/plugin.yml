@@ -75,7 +75,7 @@ commands:
     aliases: [eburn]
   bonushome:
     description: Modify the amount of bonus homes a player has.
-    usage: /<command> <add|set|remove> <player> <amount>
+    usage: /<command> <add|set|remove|info> <player> <amount>
     aliases: [ebonushome]
   cartographytable:
     description: Opens up a cartography table.
