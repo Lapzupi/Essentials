@@ -47,7 +47,7 @@ public class Commandbonushome extends EssentialsCommand {
                     throw new NotEnoughArgumentsException();
                 }
                 
-                if(!user.isAuthorized("essentials.bonushome.info.others")) {
+                if(!sender.isAuthorized("essentials.bonushome.info.others", ess)) {
                     throw new Exception(tl("noPerm", "essentials.bonushome.info.others"));
                 }
                 
@@ -56,29 +56,34 @@ public class Commandbonushome extends EssentialsCommand {
                 return;
             }
             case 3: {
-                if (!user.isAuthorized("essentials.bonushome.edit")) {
+                if (!sender.isAuthorized("essentials.bonushome.edit", ess)) {
                     throw new Exception(tl("noPerm", "essentials.bonushome.edit"));
                 }
                 final User target = getPlayer(server, user, args, 1);
                 final int amount = Integer.parseInt(args[2]);
-                if (amount <= 0) {
-                    throw new Exception(tl("bonushomeGreaterThan", ""));
-                }
-                
                 final String mode = args[0];
                 
                 switch (mode.toLowerCase(Locale.ENGLISH)) {
                     case "add": {
+                        if (amount <= 0) {
+                            throw new Exception(tl("bonushomeGreaterThan", ""));
+                        }
                         LPMetaUtil.addBonusHomeAmount(target.getUUID(), amount);
                         sender.sendMessage(tl("bonushomeAdd", amount, user.getName()));
                         return;
                     }
                     case "remove": {
+                        if (amount <= 0) {
+                            throw new Exception(tl("bonushomeGreaterThan", ""));
+                        }
                         LPMetaUtil.removeBonusHomeAmount(target.getUUID(), amount);
                         sender.sendMessage(tl("bonushomeRemove", amount, user.getName()));
                         return;
                     }
                     case "set": {
+                        if (amount < 0) {
+                            throw new Exception(tl("bonushomeGreaterThan", ""));
+                        }
                         LPMetaUtil.setBonusHomeAmount(target.getUUID(), amount);
                         sender.sendMessage(tl("bonushomeSet", amount, user.getName()));
                         return;
