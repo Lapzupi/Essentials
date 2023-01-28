@@ -22,7 +22,7 @@ public class Commandbonushome extends EssentialsCommand {
     
     private User getUser(Server server, String[] args, Player player) throws Exception{
         if (player == null) {
-            return getPlayer(server, args, 0, true, true);
+            return getPlayer(server, args, 1, true, true);
         }
         return ess.getUser(player);
     }
