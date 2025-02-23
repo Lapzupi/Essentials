@@ -3,6 +3,7 @@ package com.earth2me.essentials;
 import com.earth2me.essentials.commands.IEssentialsCommand;
 import com.earth2me.essentials.signs.EssentialsSign;
 import com.earth2me.essentials.textreader.IText;
+import net.essentialsx.api.v2.ChatType;
 import net.kyori.adventure.text.minimessage.tag.Tag;
 import org.bukkit.Material;
 import org.bukkit.event.EventPriority;
@@ -37,6 +38,8 @@ public interface ISettings extends IConf {
 
     String getChatFormat(String group);
 
+    String getChatFormat(String group, ChatType chatType);
+
     String getWorldAlias(String world);
 
     int getChatRadius();
@@ -52,6 +55,8 @@ public interface ISettings extends IConf {
     boolean isPersistShout();
 
     boolean isChatQuestionEnabled();
+
+    boolean isUsePaperChatEvent();
 
     BigDecimal getCommandCost(IEssentialsCommand cmd);
 
@@ -99,6 +104,8 @@ public interface ISettings extends IConf {
     int getProtectCreeperMaxHeight();
 
     List<Material> getProtectList(final String configName);
+
+    List<String> getProtectListRaw(final String configName);
 
     boolean getProtectPreventSpawn(final String creatureName);
 
@@ -341,6 +348,8 @@ public interface ISettings extends IConf {
 
     boolean isWorldChangeFlyResetEnabled();
 
+    boolean isWorldChangePreserveFlying();
+
     boolean isWorldChangeSpeedResetEnabled();
 
     long getCommandCooldownMs(String label);
@@ -414,6 +423,8 @@ public interface ISettings extends IConf {
     boolean isUpdateCheckEnabled();
 
     boolean showZeroBaltop();
+
+    BigDecimal getMultiplier(final User user);
 
     int getMaxItemLore();
 
